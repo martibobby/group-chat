@@ -1,4 +1,3 @@
-
 //modules, these are pre-installed, but node has many more, more tha other languages
 var fs =  require('fs'); //allow access to file system
 var path = require('path'); //
@@ -25,7 +24,7 @@ app.get('/', function(req, res){
 io.on('connection', (socket) => {
   socket.on('chat message', function(msg){
     console.log('message: ' + msg);
-     io.emit('chat message', msg);
+    io.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
     console.log('user disconnected');
