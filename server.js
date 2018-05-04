@@ -44,7 +44,7 @@ http.listen(port, null, function() {
 });
 //main.use(express.bodyParser());
 
-app.get('/', function(req, res){ res.sendFile(__dirname + '/video.html'); });
+//app.get('/', function(req, res){ res.sendFile(__dirname + '/index.html'); });
 // main.get('/index.html', function(req, res){ res.sendfile('newclient.html'); });
 // main.get('/client.html', function(req, res){ res.sendfile('newclient.html'); });
 
