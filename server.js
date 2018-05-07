@@ -14,7 +14,7 @@ var io  = require('socket.io').listen(http);
 var channels = {};
 var sockets = {};
 
-var port = 8014;
+var port = 8002;
 //files we want to serv will be in this dir
 var public_dir = path.join(__dirname, 'public');
 var src_dir = path.join(__dirname, 'src');
