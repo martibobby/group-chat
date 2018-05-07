@@ -73,10 +73,12 @@
                     username: readCookie('username'),
                     color: readCookie('color'),
                     text: $('#m').val()
-                }
+                };
                 
+                // this console.logs the message object to show you what it looks like
                 console.log(message);
 
+                // when back end is ready, replace the second param of this function with message
                 socket.emit('chat message', $('#m').val());
                 $('#m').val('');
                 return false;
