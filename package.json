@@ -11,8 +11,9 @@
     "url": "https://github.com/martibobby/group-chat"
   },
   "dependencies": {
+    "express": "latest",
     "mime-types": "latest",
-    "websocket": "latest",
-    "express": "latest"
+    "socket.io": "^2.1.0",
+    "websocket": "latest"
   }
 }
