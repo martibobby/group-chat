@@ -2,12 +2,28 @@
 <html>
   <head>
     <title>Socket.IO chat</title>
-    <link rel="stylesheet" href="css/index.css">
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      /*body { font: 13px Helvetica, Arial; }*/
+      form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+      form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+      form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+      #messages { list-style-type: none; margin: 0; padding: 0; }
+      #messages li { padding: 5px 10px; }
+      #messages li:nth-child(odd) { background: #eee; }
+      #videoPlayer {
+          background-color: #333;
+      }
+      #videoPlayer {
+          width:  100%;
+          height:  240px;
+          border:  1px solid black;
+      }
+    </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/set_cookie.js"></script>
   </head>
-  <body>
-    <div id="videoPlayer" onload="init()">
+  <body onload="init()">
+    <div id="videoPlayer">
     </div>
     <div id="chatRoom">
       <ul id="messages"></ul>
@@ -32,6 +48,7 @@
     });
 
         /** CONFIG **/
+        var port = 8002;
         var SIGNALING_SERVER = "http://localhost";
         var USE_AUDIO = true;
         var USE_VIDEO = true;
@@ -118,7 +135,7 @@
                     }
                     remote_media.attr("controls", "");
                     peer_media_elements[peer_id] = remote_media;
-                    $('body').append(remote_media);
+                    $('#videoPlayer').append(remote_media);
                     attachMediaStream(remote_media[0], event.stream);
                 }
                 /* Add our local stream */
@@ -235,7 +252,7 @@
             navigator.getUserMedia = ( navigator.getUserMedia ||
                    navigator.webkitGetUserMedia ||
                    navigator.mozGetUserMedia ||
-                   navigator.msGetUserMedia);
+                   navigator.msGetUserMedia || navigator.mediaDevices.getUserMedia);
             attachMediaStream = function(element, stream) {
                 console.log('DEPRECATED, attachMediaStream will soon be removed.');
                 element.srcObject = stream;
@@ -248,7 +265,7 @@
                     local_media.attr("autoplay", "autoplay");
                     local_media.attr("muted", "true"); /* always mute ourselves by default */
                     local_media.attr("controls", "");
-                    $('body').append(local_media);
+                    $('#videoPlayer').append(local_media);
                     attachMediaStream(local_media[0], stream);
                     if (callback) callback();
                 },
