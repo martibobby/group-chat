@@ -5,8 +5,8 @@ function createCookie(name, value, days) {
         var expires = "; expires="+date.toGMTString();
     } else {
         var expires = "";
-        document.cookie = name+"="+value+expires+"; path=/";
     } 
+    document.cookie = name+"="+value+expires+"; path=/";
 }
 
 function readCookie(name) {
@@ -29,7 +29,18 @@ function checkCookie(name) {
 }
 
 $(document).ready(function() {
-    if(!checkCookie('username')) {
-        $('#username-form').removeClass('d-none');
+    // if no username cookie has been set
+    if(!checkCookie('username') || !checkCookie('color')) {
+        $('#user-form').removeClass('d-none');
     }
+
+    $('#submit').click(() => {
+        var username = $('#username').val();
+        var color = $('#color').val();
+        
+        createCookie('username', username, 1);
+        createCookie('color', color, 1);
+
+        $('#user-form').addClass('d-none');
+    });
 });
