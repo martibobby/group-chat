@@ -19,9 +19,7 @@ var port = 8014;
 var public_dir = path.join(__dirname, 'public');
 var src_dir = path.join(__dirname, 'src');
 
-app.get('/', function(req, res){
-    res.sendFile(public_dir +'/index.html');
-});
+app.use(express.static(public_dir));
 
 io.on('connection', (socket) => {
   socket.on('chat message', function(msg){
