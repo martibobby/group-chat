@@ -12,13 +12,18 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
-      #videoPlayer {
-          background-color: #333;
+      #chatRoom {
+        height:50%;
+        width:100%;
       }
       #videoPlayer {
-          width:  100%;
-          height:  240px;
+        background-color: #333;
+          width:  auto;
+          height:  50%;
           border:  1px solid black;
+      }
+      .video {
+        height:5rem;
       }
       .form {
           background: white;
@@ -54,8 +59,9 @@
     </div>
     <div id="videoPlayer">
     </div>
-    <div id="chatRoom">
+    <div id="chatRoom" style="overflow-y:auto; height:50%;">
       <ul id="messages"></ul>
+      <br><br>
       <form action="">
         <input id="m" autocomplete="off" /><button>Send</button>
       </form>
@@ -74,18 +80,18 @@
                     color: readCookie('color'),
                     text: $('#m').val()
                 };
-                
+
                 // this console.logs the message object to show you what it looks like
                 console.log(message);
 
                 // when back end is ready, replace the second param of this function with message
-                socket.emit('chat message', $('#m').val());
+                socket.emit('chat message', message);
                 $('#m').val('');
                 return false;
             });
 
             socket.on('chat message', function(msg){
-                $('#messages').append($('<li>').text(msg));
+                $('#messages').append($('<li style="background-color: ' + msg.color + ';">').text(msg.username + ": "+ msg.text));
             });
         });
         /** CONFIG **/
@@ -302,7 +308,7 @@
                 function(stream) { /* user accepted access to a/v */
                     console.log("Access granted to audio/video");
                     local_media_stream = stream;
-                    var local_media = USE_VIDEO ? $("<video>") : $("<audio>");
+                    var local_media = USE_VIDEO ? $("<video style='height:20rem;'>") : $("<audio>");
                     local_media.attr("autoplay", "autoplay");
                     local_media.attr("muted", "true"); /* always mute ourselves by default */
                     local_media.attr("controls", "");
@@ -312,7 +318,7 @@
                 },
                 function() { /* user denied access to a/v */
                     console.log("Access denied for audio/video");
-                    alert("You chose not to provide access to the camera/microphone, demo will not work.");
+                    alert("No camera or microphone detected, only text chat avaliable.");
                     if (errorback) errorback();
                 });
         }
