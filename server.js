@@ -31,9 +31,9 @@ io.on('connection', (socket) => {
   });
 });
 
-http.listen(port, function(){
+http.listen(port, /*function(){
   console.log('listening on *: ' + port);
-});
+}, */'0.0.0.0');
 
 /********** VIDEO SERVER *************/
 
