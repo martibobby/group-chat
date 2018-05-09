@@ -23,51 +23,41 @@ app.use(express.static(public_dir));
 
 io.on('connection', (socket) => {
   socket.on('chat message', function(msg){
-    console.log('message: ' + msg);
+    //console.log('message: ' + msg);
     io.emit('chat message', msg);
   });
   socket.on('disconnect', function(){
-    console.log('user disconnected');
+    //console.log('user disconnected');
   });
 });
 
 http.listen(port, /*function(){
   console.log('listening on *: ' + port);
 }, */'0.0.0.0');
-
-/********** VIDEO SERVER *************/
-
-/*http.listen(port, null, function() {
-    console.log("Listening on port " + port);
-});*/
-//main.use(express.bodyParser());
-
-//app.get('/', function(req, res){ res.sendFile(__dirname + '/index.html'); });
-// main.get('/index.html', function(req, res){ res.sendfile('newclient.html'); });
-// main.get('/client.html', function(req, res){ res.sendfile('newclient.html'); });
+console.log("Listening on port: " + port);
 
 
 io.sockets.on('connection', function (socket) {
     socket.channels = {};
     sockets[socket.id] = socket;
 
-    console.log("["+ socket.id + "] connection accepted");
+  //  console.log("["+ socket.id + "] connection accepted");
     socket.on('disconnect', function () {
         for (var channel in socket.channels) {
             part(channel);
         }
-        console.log("["+ socket.id + "] disconnected");
+        //console.log("["+ socket.id + "] disconnected");
         delete sockets[socket.id];
     });
 
 
     socket.on('join', function (config) {
-        console.log("["+ socket.id + "] join ", config);
+      //  console.log("["+ socket.id + "] join ", config);
         var channel = config.channel;
         var userdata = config.userdata;
 
         if (channel in socket.channels) {
-            console.log("["+ socket.id + "] ERROR: already joined ", channel);
+            //console.log("["+ socket.id + "] ERROR: already joined ", channel);
             return;
         }
 
@@ -85,10 +75,10 @@ io.sockets.on('connection', function (socket) {
     });
 
     function part(channel) {
-        console.log("["+ socket.id + "] part ");
+        //console.log("["+ socket.id + "] part ");
 
         if (!(channel in socket.channels)) {
-            console.log("["+ socket.id + "] ERROR: not in ", channel);
+          //  console.log("["+ socket.id + "] ERROR: not in ", channel);
             return;
         }
 
@@ -105,7 +95,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('relayICECandidate', function(config) {
         var peer_id = config.peer_id;
         var ice_candidate = config.ice_candidate;
-        console.log("["+ socket.id + "] relaying ICE candidate to [" + peer_id + "] ", ice_candidate);
+      //  console.log("["+ socket.id + "] relaying ICE candidate to [" + peer_id + "] ", ice_candidate);
 
         if (peer_id in sockets) {
             sockets[peer_id].emit('iceCandidate', {'peer_id': socket.id, 'ice_candidate': ice_candidate});
@@ -115,7 +105,7 @@ io.sockets.on('connection', function (socket) {
     socket.on('relaySessionDescription', function(config) {
         var peer_id = config.peer_id;
         var session_description = config.session_description;
-        console.log("["+ socket.id + "] relaying session description to [" + peer_id + "] ", session_description);
+      //  console.log("["+ socket.id + "] relaying session description to [" + peer_id + "] ", session_description);
 
         if (peer_id in sockets) {
             sockets[peer_id].emit('sessionDescription', {'peer_id': socket.id, 'session_description': session_description});
