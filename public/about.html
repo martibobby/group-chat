@@ -4,10 +4,9 @@
     <meta charset="utf-8">
     <title>About Page!</title>
     <link rel="stylesheet" href="https://bootswatch.com/4/lux/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <style>
-    * { font-family:tahoma; font-size:12px; padding:0px;margin:0px;}
-    p { line-height:18px; }
-    div { width:500px; margin-left:auto; margin-right:auto;}
+    p { font-size: 1rem }
     img { height: 20rem; margin: 2rem; }
     #content { padding:5px; background:#ddd; border-radius:5px;
         overflow-y: scroll; border:1px solid #CCC;
@@ -20,49 +19,54 @@
   </head>
 
   <body>
-      <h1 class="heading margin-bottom-md">About the Project!<h1>
-      <h2 class="heading margin-bottom-md">Description</h2>
-      <p>
-        This web application is designed to allow multiple users to participate in a chatroom through video, audio, or text.
-        Each user is able to enter their name and choose what color will represent them in the chat.
-        They can also enter a specific room if they wish.
-
-        The project is build with webRTC and socket.io and using jQuery.
-        The styling and layout is primarily created with Bootstrap v4.0.
-      </p>
-      <h2 class="heading margin-bottom-md">Video Tutorial!</h2>
-      <h2 class="heading margin-bottom-md">Developers</h2>
-      <h4>Belinda Huang</h4>
-      <img src="./images/Belinda.jpeg" alt="Belinda Reading">
-      <p>
-        Belinda is a triple major at the University of St. Thomas studying Computer Science, Piano Performance, and French.
-        In her free time, she enjoys reading and writing. She's also interested in photography and painting.
-      </p>
-
-      <h4>Sam Cole</h4>
-      <img src="./images/Sam.jpg" alt="Sam Cole">
-      <p>
-        Sam is a double major at the University of St. Thomas studying Computer Science, and German. In his free time, he
-        enjoys playing guitar, playing piano, and camping.
-      </p>
-
-      <h4>Kelsey Faulise</h4>
-      <img src="./images/kelsey.jpg" alt="Sam Cole">
-      <p>
-        Kelsey is a senior computer science major at the University of St Thomas. She originally started her schooling at the University of Missouri - Columbia, where she was also a computer science major. She is
-        also minoring in Spanish. She hopes to get a job as a software developer. In her spare time, Kelsey likes to cross country ski, cook, read, run, and play softball.
-        She has taken a great liking for the outdoors and spending good quality time with her family.
-      </p>
-
-      <h4>Bobby Martin</h4>
-      <img src="./images/bobby.jpg" alt="Bobby Martin">
-      <p>My name is Bobby.</p>
-      <p>I come late to class always.</p>
-      <p>I skip group meetings.</p>
-
-
-
-
+      <div class="container">
+            <h1 class="heading margin-bottom-md">About the Project!<h1>
+            <h2 class="heading margin-bottom-md">Description</h2>
+            <p>
+                This web application is designed to allow multiple users to participate in a chatroom through video, audio, or text.
+                Each user is able to enter their name and choose what color will represent them in the chat.
+                They can also enter a specific room if they wish.
+        
+                The project is build with webRTC and socket.io and using jQuery.
+                The styling and layout is primarily created with Bootstrap v4.0.
+            </p>
+            <h2 class="heading margin-bottom-md">Video Tutorial!</h2>
+            <h2 class="heading margin-bottom-md">Developers</h2>
+            <div class="row">
+                <div class="col-6">
+                    <h4>Belinda Huang</h4>
+                        <img src="./images/Belinda.jpeg" alt="Belinda Reading">
+                        <p>
+                            Belinda is a triple major at the University of St. Thomas studying Computer Science, Piano Performance, and French.
+                            In her free time, she enjoys reading and writing. She's also interested in photography and painting.
+                        </p>
+                </div>
+                <div class="col-6">
+                    <h4>Sam Cole</h4>
+                        <img src="./images/Sam.jpg" alt="Sam Cole">
+                        <p>
+                            Sam is a double major at the University of St. Thomas studying Computer Science, and German. In his free time, he
+                            enjoys playing guitar, playing piano, and camping.
+                        </p>
+                </div>
+                <div class="col-6">
+                    <h4>Kelsey Faulise</h4>
+                    <img src="./images/kelsey.jpg" alt="Sam Cole">
+                    <p>
+                        Kelsey is a senior computer science major at the University of St Thomas. She originally started her schooling at the University of Missouri - Columbia, where she was also a computer science major. She is
+                        also minoring in Spanish. She hopes to get a job as a software developer. In her spare time, Kelsey likes to cross country ski, cook, read, run, and play softball.
+                        She has taken a great liking for the outdoors and spending good quality time with her family.
+                    </p>
+                </div>
+                <div class="col-6">
+                    <h4>Bobby Martin</h4>
+                    <img src="./images/bobby.jpg" alt="Bobby Martin">
+                    <p>My name is Bobby.</p>
+                    <p>I come late to class always.</p>
+                    <p>I skip group meetings.</p>
+                </div>
+            </div>
+      </div>
       <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js">
       </script>
       <script src="./frontend.js"></script>

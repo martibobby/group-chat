@@ -11,7 +11,7 @@ var io  = require('socket.io').listen(http);
 var channels = {};
 var sockets = {};
 
-var port = 8002;
+var port = 8003;
 var public_dir = path.join(__dirname, 'public');
 var src_dir = path.join(__dirname, 'src');
 
