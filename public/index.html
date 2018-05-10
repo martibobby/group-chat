@@ -18,9 +18,11 @@
       }
       #videoPlayer {
         background-color: #333;
-          width:  auto;
-          height:  50%;
-          border:  1px solid black;
+        width: 100vw;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
       }
       .video {
         height:5rem;
@@ -37,8 +39,7 @@
           align-items:center;
           width: 100vw;
           height: 100vh;
-          background: black;
-          opacity: 0.8
+          background: rgba(0, 0, 0, 0.8);
       }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>

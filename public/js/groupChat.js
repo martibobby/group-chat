@@ -88,7 +88,7 @@ function init() {
         }
         peer_connection.onaddstream = function(event) {
             //console.log("onAddStream", event);
-            var remote_media = USE_VIDEO ? $("<video style='height:20rem;'>") : $("<audio>");
+            var remote_media = USE_VIDEO ? $("<video style='width:22vw;'>") : $("<audio>");
             remote_media.attr("autoplay", "autoplay");
             if (MUTE_AUDIO_BY_DEFAULT) {
                 remote_media.attr("muted", "true");
@@ -193,7 +193,7 @@ function setup_local_media(callback, errorback) {
     navigator.getUserMedia({"audio":USE_AUDIO, "video":USE_VIDEO},
         function(stream) { /* user accepted access to a/v */
             local_media_stream = stream;
-            var local_media = USE_VIDEO ? $("<video style='height:20rem;'>") : $("<audio>");
+            var local_media = USE_VIDEO ? $("<video style='width:22vw;'>") : $("<audio>");
             local_media.attr("autoplay", "autoplay");
             local_media.attr("muted", "true"); /* always mute ourselves by default */
             local_media.attr("controls", "");
