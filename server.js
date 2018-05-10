@@ -32,6 +32,7 @@ http.listen(port, /*function(){
 }, */'0.0.0.0');
 console.log("Listening on port: " + port);
 
+/****** Video Below ***/
 
 io.sockets.on('connection', function (socket) {
     socket.channels = {};

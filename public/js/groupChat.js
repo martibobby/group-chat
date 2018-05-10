@@ -30,10 +30,22 @@ $(function () {
         return false;
     });
 
+
     socket.on('chat message', function(msg){
         $('#messages').append($('<li style="background-color: ' + msg.color + ';">').text(msg.username + ": "+ msg.text));
     });
 
+});
+
+$(document).ready(function(){
+  $("#audioOnly").click(function() {
+    console.log(local_media_stream);
+    $("#myVideo").addClass("d-none");
+  });
+
+  $("#videoOn").click(() => {
+    $("#myVideo").removeClass("d-none");
+  });
 });
 
 function init() {
@@ -193,12 +205,10 @@ function setup_local_media(callback, errorback) {
     navigator.getUserMedia({"audio":USE_AUDIO, "video":USE_VIDEO},
         function(stream) { /* user accepted access to a/v */
             local_media_stream = stream;
-            var local_media = USE_VIDEO ? $("<video style='width:22vw;'>") : $("<audio>");
+            var local_media = USE_VIDEO ? $("<video style='width:22vw;' id=\"myVideo\">") : $("<audio>");
             local_media.attr("autoplay", "autoplay");
             local_media.attr("muted", "true"); /* always mute ourselves by default */
             local_media.attr("controls", "");
-            var button = $("<button class=\"btn\" type=\"button\" >Audio Only</button>");
-            local_media.append(button);
             $('#videoPlayer').append(local_media);
             attachMediaStream(local_media[0], stream);
 
